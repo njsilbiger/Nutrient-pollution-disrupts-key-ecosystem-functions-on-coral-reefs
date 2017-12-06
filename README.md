@@ -30,8 +30,8 @@ Quinlan, Hollie M. Putnam, Michael D. Fox, and Megan J. Donahue
 **QA QC Data:** These are the QA/QC data from the analysis.  
   
 
-**plots** Output plots from the code
+**plots:** Output plots from the code
   
-**stats** Output stats tables from the code
+**stats:** Output stats tables from the code
 
 **CRANEMetabolismAnalysis.R:** All the scripts used to QA/QC, process, and analyze all the data and make plots used in the manuscript.
