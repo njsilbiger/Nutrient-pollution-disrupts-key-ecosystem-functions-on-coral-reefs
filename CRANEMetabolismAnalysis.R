@@ -2,7 +2,7 @@
 ### CRANE Data Analysis for Biogeochemical Responses####
 ### Created by Nyssa Silbiger                   ###
 ### Created on 5/03/2016                       ###
-### Edited on 12/5/2017                               ###
+### Edited on 4/9/2018                               ###
 ### Edited by NJS                               ###
 ###################################################
 
@@ -719,7 +719,12 @@ deltapHMeans.net <- ddply(AllData, c("Substrate","NutLevel"), summarise,
  Coral.mean<-ddply(Coral, c("Species","Nuts"), summarise,
        pcBW.mean = mean(pcDeltaBW, na.rm=TRUE),
        n = sum(!is.na(pcDeltaBW)),
-       pcBW.se = sd(pcDeltaBW, na.rm=TRUE)/sqrt(n))
+       pcBW.se = sd(pcDeltaBW, na.rm=TRUE)/sqrt(n),
+       CoralGrowth.mean = mean((1000/50) *DeltaBW/AFDW, na.rm=TRUE), #mg/ gram AFDW rate per day
+       CoralGrowth.SE = sd((1000/50) *DeltaBW/AFDW, na.rm=TRUE)/sqrt(n),
+       CoralGrowth.meanSA = mean((1000/50) *DeltaBW/SA, na.rm=TRUE), #gram/ SA AFDW rate
+       CoralGrowthSA.SE = sd((1000/50) *DeltaBW/SA, na.rm=TRUE)/sqrt(n)
+       )
  
  #algae
  AlgaeBW.mod<-lmer(pcDeltaWW ~ Nuts + (1|Tank), data= Algae) # I looked for an interaction, but found none
@@ -727,7 +732,11 @@ deltapHMeans.net <- ddply(AllData, c("Substrate","NutLevel"), summarise,
  Algae.mean<-ddply(Algae, c("Nuts"), summarise,
                    pcBW.mean = mean(pcDeltaWW, na.rm=TRUE),
                    n = sum(!is.na(pcDeltaWW)),
-                   pcBW.se = sd(pcDeltaWW, na.rm=TRUE)/sqrt(n))
+                   pcBW.se = sd(pcDeltaWW, na.rm=TRUE)/sqrt(n),
+                   AlgaeGrowth.mean = mean((1000/50) *DeltaWW/(AFDW+AFDWbits), na.rm=TRUE), #mg/ gram AFDW rate per day
+                   AlgaeGrowth.SE = sd((1000/50) *DeltaWW/(AFDW+AFDWbits), na.rm=TRUE)/sqrt(n),
+                   AlgaeGrowth.meanSA = mean((1000/50) *DeltaWW/FinalSA, na.rm=TRUE), #gram/ SA AFDW rate
+                   AlgaeGrowthSA.SE = sd((1000/50) *DeltaWW/FinalSA, na.rm=TRUE)/sqrt(n))
  
  # rubble
 RubbleBW.mod<-lmer(pcDeltaBW ~ Nuts + (1|Tank), data= Rubble) # I looked for an interaction, but found none
@@ -735,63 +744,43 @@ Rubble$Nuts<-ordered(Rubble$Nuts, levels =c('Ambient','Medium','High') )
 Rubble.mean<-ddply(Rubble, c("Nuts"), summarise,
                   pcBW.mean = mean(pcDeltaBW, na.rm=TRUE),
                   n = sum(!is.na(pcDeltaBW)),
-                  pcBW.se = sd(pcDeltaBW, na.rm=TRUE)/sqrt(n))
+                  pcBW.se = sd(pcDeltaBW, na.rm=TRUE)/sqrt(n),
+                  RubbleGrowth.mean = mean((1000/50) *DeltaBW/AFDW, na.rm=TRUE), #mg/ gram AFDW rate per day
+                  RubbleGrowth.SE = sd((1000/50) *DeltaBW/AFDW, na.rm=TRUE)/sqrt(n),
+                  RubbleGrowth.meanSA = mean((1000/50) *DeltaBW/SA, na.rm=TRUE), #gram/ SA AFDW rate
+                  RubbleGrowthSA.SE = sd((1000/50) *DeltaBW/SA, na.rm=TRUE)/sqrt(n))
 
-pdf('plots/MSplots/BuoyantWeight.pdf', width = 4, height = 8.5, useDingbats = FALSE)
-par(mfrow=c(3,1))
-# create a matrix for the coral data
-m<-t(matrix(Coral.mean$pcBW.mean,3,2))
-mse<-t(matrix(Coral.mean$pcBW.se,3,2))
-x<-barplot(m,beside=TRUE,  ylim=c(0, 5), ylab = 'Coral % change BW',
-           legend.text = c(expression(italic('M. capitata')), expression(italic('P. compressa'))), args.legend = list(bty='n'))
-arrows(x, m + mse,  # x , mean + SE
-       x, m - mse,  # x, mean - SE
-       angle=90, code=3, length = 0.05)
-
-# algae
-x<-barplot(Algae.mean$pcBW.mean,   ylim = c(0,300), ylab = 'Algae % change WW')
-arrows(x, Algae.mean$pcBW.mean + Algae.mean$pcBW.se,  # x , mean + SE
-       x, Algae.mean$pcBW.mean - Algae.mean$pcBW.se,  # x, mean - SE
-       angle=90, code=3, length = 0.05)
-
-#Rubble
-x<-barplot(Rubble.mean$pcBW.mean, names.arg = c('Ambient', 'Medium','High'),  ylab = 'Rubble % change BW', ylim=c(-0.6,0.6))
-arrows(x, Rubble.mean$pcBW.mean + Rubble.mean$pcBW.se,  # x , mean + SE
-       x, Rubble.mean$pcBW.mean - Rubble.mean$pcBW.se,  # x, mean - SE
-       angle=90, code=3, length = 0.05)
-abline(h=0)
-dev.off()
 
 pdf('plots/MSplots/BuoyantWeight_dot.pdf', width = 4, height = 8.5, useDingbats = FALSE)
 par(mfrow=c(3,1))
-# create a matrix for the coral data
-plot(c(1:3), Coral.mean$pcBW.mean[1:3], pch=19, ylim=c(0, 5), xlab="", xaxt='n', ylab = 'Coral % change BW', col = mypalette, cex=1.5)
-lines(c(1:3), Coral.mean$pcBW.mean[1:3], col = 'black', type = "c")
-arrows(c(1:3), Coral.mean$pcBW.mean + Coral.mean$pcBW.se,  # x , mean + SE
-       c(1:3), Coral.mean$pcBW.mean - Coral.mean$pcBW.se,  # x, mean - SE
+
+plot(c(1:3), Coral.mean$CoralGrowth.mean[1:3], pch=19, ylim=c(10, 35), xlab="", xaxt='n', ylab = expression(paste('Coral Growth (mg g ', AFDW^-1, day^-1,')')), col = mypalette, cex=1.5)
+lines(c(1:3), Coral.mean$CoralGrowth.mean[1:3], col = 'black', type = "c")
+arrows(c(1:3), Coral.mean$CoralGrowth.mean + Coral.mean$CoralGrowth.SE,  # x , mean + SE
+       c(1:3), Coral.mean$CoralGrowth.mean - Coral.mean$CoralGrowth.SE,  # x, mean - SE
        angle=90, code=3, length = 0.05)
-points(c(1:3), Coral.mean$pcBW.mean[4:6], pch=15, ylim=c(0, 5), col = mypalette, cex=1.5)
-lines(c(1:3), Coral.mean$pcBW.mean[4:6], col = 'black', type = "c")
+points(c(1:3), Coral.mean$CoralGrowth.mean[4:6], pch=15, ylim=c(0, 5), col = mypalette, cex=1.5)
+lines(c(1:3), Coral.mean$CoralGrowth.mean[4:6], col = 'black', type = "c")
 legend('topright',legend = c(expression(italic('M. capitata')), expression(italic('P. compressa'))), bty='n',
        pch = c(19,15), col = 'black')
 
   
 # algae
-plot(1:3,Algae.mean$pcBW.mean,   ylim = c(200,300), xlab="",xaxt='n',ylab = 'Algae % change WW', pch = 19, col = mypalette, cex=1.5)
-lines(c(1:3), Algae.mean$pcBW.mean, col = 'black', type = "c")
-arrows(1:3, Algae.mean$pcBW.mean + Algae.mean$pcBW.se,  # x , mean + SE
-       1:3, Algae.mean$pcBW.mean - Algae.mean$pcBW.se,  # x, mean - SE
+plot(1:3,Algae.mean$AlgaeGrowth.mean,   ylim = c(240,340), xlab="",xaxt='n',ylab = expression(paste('Algal Growth (mg g ', AFDW^-1, day^-1,')')), pch = 19, col = mypalette, cex=1.5)
+lines(c(1:3), Algae.mean$AlgaeGrowth.mean, col = 'black', type = "c")
+arrows(1:3, Algae.mean$AlgaeGrowth.mean + Algae.mean$AlgaeGrowth.SE,  # x , mean + SE
+       1:3, Algae.mean$AlgaeGrowth.mean - Algae.mean$AlgaeGrowth.SE,  # x, mean - SE
        angle=90, code=3, length = 0.05)
        
 
 #Rubble
-plot(Rubble.mean$pcBW.mean, xaxt='n',  ylab = 'Rubble % change BW',xlab="",
-     pch = 19, col = mypalette, cex=1.5, ylim=c(-0.6,0.6))
-arrows(1:3, Rubble.mean$pcBW.mean + Rubble.mean$pcBW.se,  # x , mean + SE
-       1:3, Rubble.mean$pcBW.mean - Rubble.mean$pcBW.se,  # x, mean - SE
+plot(Rubble.mean$RubbleGrowth.mean, xaxt='n',  ylab = expression(paste('Rubble Growth (mg g ', AFDW^-1, day^-1,')')),xlab="",
+     pch = 19, col = mypalette, cex=1.5, ylim=c(-3,2))
+arrows(1:3, Rubble.mean$RubbleGrowth.mean + Rubble.mean$RubbleGrowth.SE,  # x , mean + SE
+       1:3, Rubble.mean$RubbleGrowth.mean - Rubble.mean$RubbleGrowth.SE,  # x, mean - SE
        angle=90, code=3, length = 0.05)
 abline(h=0, lty=2)
-lines(c(1:3), Rubble.mean$pcBW.mean, col = 'black', type = "c")
+lines(c(1:3), Rubble.mean$RubbleGrowth.mean, col = 'black', type = "c")
 text(x = 1:3, par("usr")[3] ,  labels = c("Ambient","Medium","High"), pos = 1, xpd = TRUE)
 
 dev.off()
