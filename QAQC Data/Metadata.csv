@@ -9,10 +9,8 @@ TankTA,Total Alkalinity of the experimental aquaria (microEq)
 HeaderTA,Total Alkalinity of the header tank (microEq)
 TankTemp,Temperature of the experimental aquaria ©
 TankpH,pH of the experimental aquaria (total scale)
-TankSalinity,Salinity of the experimental aquaria
 HeaderTemp,Temperature of the experimental aquaria ©
 HeaderpH,pH of the header aquaria (total scale)
-HeaderSalinity,Salinity of the header aquaria
 TankP,Phosphate in the experimental aquaria (micromol/L)
 TankN,Nitrate+nitrite in the experimental aquaria (micromol/L)
 TankSi,Silicate in the experimental aquaria (micromol/L)
