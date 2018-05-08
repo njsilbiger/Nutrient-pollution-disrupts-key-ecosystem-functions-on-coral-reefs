@@ -2,7 +2,7 @@
 ### CRANE Data Analysis for Biogeochemical Responses####
 ### Created by Nyssa Silbiger                   ###
 ### Created on 5/03/2016                       ###
-### Edited on 4/9/2018                               ###
+### Edited on 5/8/2018                               ###
 ### Edited by NJS                               ###
 ###################################################
 
@@ -28,11 +28,13 @@ error.bar <- function(x, y, upper, lower=upper, length=0.1,...){
   arrows(x,y+upper, x, y-lower, angle=90, code=3, length=length, ...)
 }
 
-NECCalc<-function(HeaderTA,TankTA,ResidenceTime,SurfaceArea, TankVolume=5678,SWDenstiy=1.023){
+NECCalc<-function(HeaderTA,TankTA,ResidenceTime,SurfaceArea, TankVolume=5678,SWDenstiy=1.023, HeaderN=0, TankN=0, HeaderP=0, TankP=0){
  
    #NEC<-0.5*(HeaderTA-TankTA)*TankVolume*SWDenstiy/(ResidenceTime*SurfaceArea)/1000
-   
-   NEC<-0.5*(HeaderTA-TankTA)*(TankVolume/SurfaceArea)*(SWDenstiy/ResidenceTime)/1000
+   deltaN<-HeaderN-TankN # account for uptake of N
+   deltaP<-HeaderP-TankP #account for updakte of P
+   deltaTA<-(HeaderTA-TankTA)
+   NEC<-0.5*(deltaTA-deltaN-2*deltaP)*(TankVolume/SurfaceArea)*(SWDenstiy/ResidenceTime)/1000
    
    
    return(NEC)
@@ -90,7 +92,7 @@ NutCalc<-function(HeaderN,TankN,ResidenceTime,SurfaceArea, TankVolume=5678,SWDen
 
 # Load Data-----------------------------------------
 #Chem Data
-ChemData<-read.csv('Data/AllChemData_noCorrect.csv') #read in 1st 12 columns only
+ChemData<-read.csv('Data/AllChemData_noCorrect_Nuts.csv') #read in 1st 12 columns only
 ChemData<-ChemData[,-c(24,25)]
 
 #Biology Data
@@ -108,11 +110,10 @@ Algae <- read.csv("data/Algae_Rprocessed.csv",header=TRUE)
 Sand<- read.csv("data/Sand_Rprocessed.csv",header=TRUE)
 
 
-## Normalize the TA----------------------------------------------------------------------
-#normalize the TA to N+N concentrations.  
-#I am also only normalizing the headers because the N+N in the tanks are essentially zero due to uptake 
+## TA Normalization----------------------------------------------------------------------
+# 
 
-ChemData$HeaderTA.norm<-ChemData$HeaderTA-ChemData$HeaderN-ChemData$HeaderP
+ChemData$HeaderTA.norm<-ChemData$HeaderTA # I switched to nutrient normalization step to the NEC function see line 31
 
 ChemData$TankTA.norm<-ChemData$TankTA 
 
@@ -278,26 +279,34 @@ AllData<-AllData[order(AllData$Aquarium),]
 AllData$NEC.AFDW<-NECCalc(HeaderTA = AllData$HeaderTA.norm, 
                     TankTA = AllData$TankTA.norm, 
                     ResidenceTime = AllData$ResTime.mean, 
-                    SurfaceArea = AllData$AFDW)
+                    SurfaceArea = AllData$AFDW,
+                    HeaderN = AllData$HeaderN, TankN = AllData$TankN, 
+                    HeaderP = AllData$HeaderP, TankP = AllData$TankP)
 
   
   #NEC using lagrangian method with dry weight normalization
   AllData$NEC.DW<-NECCalc(HeaderTA = AllData$HeaderTA.norm, 
                             TankTA = AllData$TankTA.norm, 
                             ResidenceTime = AllData$ResTime.mean, 
-                            SurfaceArea = AllData$DW)
+                            SurfaceArea = AllData$DW,
+                          HeaderN = AllData$HeaderN, TankN = AllData$TankN, 
+                          HeaderP = AllData$HeaderP, TankP = AllData$TankP)
   
   #NEC using lagrangian method with volume normalization
   AllData$NEC.Vol<-NECCalc(HeaderTA = AllData$HeaderTA.norm, 
                             TankTA = AllData$TankTA.norm, 
                             ResidenceTime = AllData$ResTime.mean, 
-                            SurfaceArea = AllData$Volume)  
+                            SurfaceArea = AllData$Volume,
+                           HeaderN = AllData$HeaderN, TankN = AllData$TankN, 
+                           HeaderP = AllData$HeaderP, TankP = AllData$TankP)  
   
   #NEC using lagrangian method with SA normalization
   AllData$NEC.SA<-NECCalc(HeaderTA = AllData$HeaderTA.norm, 
                            TankTA = AllData$TankTA.norm, 
                            ResidenceTime = AllData$ResTime.mean, 
-                           SurfaceArea = AllData$SA) 
+                           SurfaceArea = AllData$SA,
+                          HeaderN = AllData$HeaderN, TankN = AllData$TankN, 
+                          HeaderP = AllData$HeaderP, TankP = AllData$TankP) 
 
  
   ###NCP calcs----------------------------------------------
@@ -583,7 +592,7 @@ y<-AllData$NEC.AFDW
 yse<-NEC.mean$SE.AFDW
 for (i in 1:length(sub)){
   plot(NA, xlab=expression(paste(Omega)[arag]),ylim=c(min(y[AllData$Substrate==sub[i]]), max(y[AllData$Substrate==sub[i]])), 
-       ylab=expression(paste("NEC ",mu,"mol g AFDW"^{-1}," hr"^{-1})), main = sub[i], xlim=c(1.5,6))
+       ylab=expression(paste("NCC ",mu,"mol CaCO"[3], " g"^{-1}," hr"^{-1})), main = sub[i], xlim=c(1.5,6), cex.lab=1.5, cex.main = 2)
   
   abline(h=0, lty=2)
   for (j in 1:length(Nuts)){
@@ -818,9 +827,9 @@ Nutplot.NEC<-function(species,i, Main = TRUE, YLAB = 'NEC'){
   plot(1:3-0.2,ef$fit, pch = 2,  cex = 3, main=ifelse(Main ==TRUE, species,NA),
        ylim=c(c(ifelse(min(SE.low)>0,0,floor(min(SE.low))),ceiling(max(SE.upper)))),
        yaxp=c(c(ifelse(min(SE.low)>0,0,floor(min(SE.low))),ceiling(max(SE.upper))), 5),
-       ylab=ifelse(YLAB=='NEC', expression(paste("NEC ",mu,"mol g AFDW"^{-1}," hr"^{-1})), 
-                   expression(paste("NCP ",mu,"mol g AFDW"^{-1}," hr"^{-1}))),
-       cex.main=2, cex.axis=1.5, cex.lab=1.5, xlab = "", col=mypalette, xaxt='n', xlim=c(0.25,3.75))
+       ylab=ifelse(YLAB=='NCC', expression(paste("NEC ",mu,"mol CaCO"[3], " g"^{-1}," hr"^{-1})), 
+                   expression(paste("NCP ",mu,"mol C g"^{-1}," hr"^{-1}))),
+       cex.main=2, cex.axis=2, cex.lab=2, xlab = "", col=mypalette, xaxt='n', xlim=c(0.25,3.75))
   
   lines(1:3-0.2,ef$fit, col = 'black', type = 'c' )
   arrows(1:3-0.2, SE.upper,1:3-0.2, SE.lower, length=0.05, angle=90, code=3,
@@ -893,7 +902,7 @@ for(i in 1:5){
   NEC.net.stats[i,1:7]<-t(matrix(c(substrate[i],a[1:6])))
   
 }
-legend('topright', legend = c('Day','Night','Net'), pch = c(2,17,19), col = mypalette, bty='n', cex=1.5)
+legend('topright', legend = c('Day NCC','Night NCC','Net Diel NCC'), pch = c(2,17,19), col = mypalette, bty='n', cex=1.5)
 dev.off()
 ###############
 
@@ -921,10 +930,10 @@ Nutplot.NCP<-function(species,i, Main = TRUE, YLAB = 'NCP'){
   plot(1:3-0.2,ef$fit, pch = 2,  cex = 3, main=ifelse(Main ==TRUE, species,NA),
        ylim=c(c(ifelse(min(SE.low)>0,0,floor(min(SE.low))),ceiling(max(SE.upper)))),
        yaxp=c(c(ifelse(min(SE.low)>0,0,floor(min(SE.low))),ceiling(max(SE.upper))), 5),
-       ylab=ifelse(YLAB=='NEC', expression(paste("NEC ",mu,"mol g AFDW"^{-1}," hr"^{-1})), 
-                   expression(paste("NCP ",mu,"mol g AFDW"^{-1}," hr"^{-1}))),
-       cex.main=2, cex.axis=1.5, cex.lab=1.5, xlab = "", col=mypalette, xaxt='n', xlim=c(0.25,3.75))
-  
+       ylab=ifelse(YLAB=='NEC', expression(paste("NEC ",mu,"mol CaCO"[3], " g"^{-1}," hr"^{-1})), 
+                   expression(paste("NCP ",mu,"mol C g"^{-1}," hr"^{-1}))),
+       cex.main=2, cex.axis=2, cex.lab=2, xlab = "", col=mypalette, xaxt='n', xlim=c(0.25,3.75))
+       
   lines(1:3-0.2,ef$fit, col = 'black', type = 'c' )
   arrows(1:3-0.2, SE.upper,1:3-0.2, SE.lower, length=0.05, angle=90, code=3,
          col=mypalette, lwd=2)
