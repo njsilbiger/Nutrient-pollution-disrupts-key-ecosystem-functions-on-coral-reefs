@@ -827,7 +827,7 @@ Nutplot.NEC<-function(species,i, Main = TRUE, YLAB = 'NEC'){
   plot(1:3-0.2,ef$fit, pch = 2,  cex = 3, main=ifelse(Main ==TRUE, species,NA),
        ylim=c(c(ifelse(min(SE.low)>0,0,floor(min(SE.low))),ceiling(max(SE.upper)))),
        yaxp=c(c(ifelse(min(SE.low)>0,0,floor(min(SE.low))),ceiling(max(SE.upper))), 5),
-       ylab=ifelse(YLAB=='NCC', expression(paste("NEC ",mu,"mol CaCO"[3], " g"^{-1}," hr"^{-1})), 
+       ylab=ifelse(YLAB=='NEC', expression(paste("NEC ",mu,"mol CaCO"[3], " g"^{-1}," hr"^{-1})), 
                    expression(paste("NCP ",mu,"mol C g"^{-1}," hr"^{-1}))),
        cex.main=2, cex.axis=2, cex.lab=2, xlab = "", col=mypalette, xaxt='n', xlim=c(0.25,3.75))
   
