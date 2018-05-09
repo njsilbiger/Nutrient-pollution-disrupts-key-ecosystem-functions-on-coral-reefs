@@ -11,14 +11,12 @@ TankTemp,Temperature of the experimental aquaria ©
 TankpH,pH of the experimental aquaria (total scale)
 HeaderTemp,Temperature of the experimental aquaria ©
 HeaderpH,pH of the header aquaria (total scale)
-TankP,Phosphate in the experimental aquaria (micromol/L)
-TankN,Nitrate+nitrite in the experimental aquaria (micromol/L)
-TankSi,Silicate in the experimental aquaria (micromol/L)
+TankP,"Phosphate in the experimental aquaria (micromol/L). Note, we only analyze a subset of Tank N and P data (each nutrient treatment X substrate treatement during dark and light conditions). We assumes that Tank nutrients were the same across all replicates"
+TankN,"Nitrate+nitrite in the experimental aquaria (micromol/L).  Note, we only analyze a subset of Tank N and P data (each nutrient treatment X substrate treatement during dark and light conditions). We assumes that Tank nutrients were the same across all replicates"
+TankSi,"Silicate in the experimental aquaria (micromol/L).  Note, we only analyze a subset of Tank Si data (each nutrient treatment X substrate treatement during dark and light conditions). We assumes that Tank nutrients were the same across all replicates"
 HeaderP,Phosphate in the header aquaria (micromol/L)
 HeaderSi,Silicate in the header aquaria (micromol/L)
 HeaderN,Nitrate+nitrite in theheader aquaria (micromol/L)
-HeaderTA.norm,"Total Alkalinity of the header aquaria, normalized to nutrient concentrations (microEq)"
-TankTA.norm,"Total Alkalinity of the experimental aquaria, normalized to nutrient concentrations (microEq)"
 TankCO2,CO2 in the experimental aquaria (micromol/kg)
 TankHCO3,HCO3 in the experimental aquaria (micromol/kg)
 TankCO3,CO3 in the experimental aquaria (micromol/kg)
