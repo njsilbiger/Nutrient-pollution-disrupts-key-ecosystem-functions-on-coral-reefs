@@ -8,9 +8,9 @@ Quinlan, Hollie M. Putnam, Michael D. Fox, and Megan J. Donahue
 
 **Funding:** NSF and NFWF. 
  
-**Journal:**  
+**Journal:**  Proceedings of the Royal Soceity B
    
-**Link:**  
+**Link:**  [http://rspb.royalsocietypublishing.org/content/285/1880/20172718](http://rspb.royalsocietypublishing.org/content/285/1880/20172718)
 
 **Contents:** There are three folders and a README.md file.
 
