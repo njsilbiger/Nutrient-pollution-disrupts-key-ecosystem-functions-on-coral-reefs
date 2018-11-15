@@ -1,22 +1,21 @@
-"","x"
-"SampleID","Sample Identifier"
-"InitialTemp","Temperature during initial buoyant weight"
-"FinalTemp","Temperature during final buoyant weight"
-"Volume","Volume (cm3) based on displacement to nearest 5 cm3"
-"TrayNum","Tray Number associated with this sample"
-"deltaSAWt","Change in weight before and after wax dipping (g)"
-"InitBW","Initial Dry Weight (g) based on buoyant wt; calculated from the inital buoyant weight and temperature based on Davies (1989) and a coral density of 2.93 g/cm3"
-"FinalBW","Final Dry Weight (g) based on buoyant wt; calculated from the final buoyant weight and temperature based on Davies (1989) and a coral density of 2.93 g/cm3"
-"DeltaBW","DeltaBW_all with three outliers removed"
-"DeltaBW_all","DeltaBW = FinalBW - InitialBW (g); change in dry weight during experiment based on wet weight"
-"pcDeltaBW","Percent Change in Dry Weight = DeltaBW/InitBW"
-"TrayWt","Weight (g) of tray associate with the sample"
-"DW","Dry Weight (g) of sample at end of experiment after oven drying at 60C for >48 hours"
-"AW","Ashed Weight (g) of sample at end of experiment after combusting at 550C for 4 hours"
-"AFDW","Ash Free Dry Weight (g) = DW - AW; organic matter lost during combustion"
-"pcAFDW","Percent Ash Free Dry Weight; organic matter as a percent of dry weight"
-"SA","Surface Area of Rubble (cm2) based on wax dipping"
-"Nuts","Nutrient level assigned to the aquarium: Ambient/Medium/High"
-"Tank","Tank Identifier; each aquarium was assigned to one of 3 tanks"
-"Aq_Ex1","Aquarium Identifier for Experiment 1; nine aquaria held coral nubbins in expt 1"
-"Aq_Ex2","Aquarium Identifier for Experiment 2; all aquaria had coral nubbins in expt 2"
+SampleID,Sample Identifier
+InitialTemp,Temperature during initial buoyant weight
+FinalTemp,Temperature during final buoyant weight
+Volume,Volume (cm3) based on displacement to nearest 5 cm3
+TrayNum,Tray Number associated with this sample
+deltaSAWt,Change in weight before and after wax dipping (g)
+InitBW,Initial Dry Weight (g) based on buoyant wt; calculated from the inital buoyant weight and temperature based on Davies (1989) and a coral density of 2.93 g/cm3
+FinalBW,Final Dry Weight (g) based on buoyant wt; calculated from the final buoyant weight and temperature based on Davies (1989) and a coral density of 2.93 g/cm3
+DeltaBW,DeltaBW_all with three outliers removed
+DeltaBW_all,DeltaBW = FinalBW - InitialBW (g); change in dry weight during experiment based on wet weight
+pcDeltaBW,Percent Change in Dry Weight = DeltaBW/InitBW
+TrayWt,Weight (g) of tray associate with the sample
+DW,Dry Weight (g) of sample at end of experiment after oven drying at 60C for >48 hours
+AW,Ashed Weight (g) of sample at end of experiment after combusting at 550C for 4 hours
+AFDW,Ash Free Dry Weight (g) = DW - AW; organic matter lost during combustion
+pcAFDW,Percent Ash Free Dry Weight; organic matter as a percent of dry weight
+SA,Surface Area of Rubble (cm2) based on wax dipping
+Nuts,Nutrient level assigned to the aquarium: Ambient/Medium/High
+Tank,Tank Identifier; each aquarium was assigned to one of 3 tanks
+Aq_Ex1,Aquarium Identifier for Experiment 1; nine aquaria held coral nubbins in expt 1
+Aq_Ex2,Aquarium Identifier for Experiment 2; all aquaria had coral nubbins in expt 2

@@ -1,24 +1,23 @@
-"x"
-"SampleID" ,"Sample Identifier; single identifier for set of 3 Porites nubbins and 3 Montipora nubbins"
-"Species" ,"Porites compressa or Montipora capitata"
-"InitialBW" ,"Initial Buoyant Weight (g) of 3 nubbins"
-"InitialTemp" ,"Temperature (C) at time of initial buoyant weighing"
-"InitialDate" ,"Date of initial buoyant weighing"
-"FinalBW" ,"Final Buoyant Weight (g) of 3 nubbins"
-"FinalTemp" ,"Temperature (C) at time of final buoyant weighing"
-"FinalDate" ,"Date of final buoyant weighing"
-"InitBWcorr" ,"Initial Dry Weight of coral set based on buoyant wt; calculated from InitialBW and InitialTemp based on Davies (1989) and a coral density of 2.93 g/cm3"
-"FinalBWcorr" ,"Final Dry Weight of coral set based on buoyant wt; calculated from FinalBW and FinalTemp based on Davies (1989) and a coral density of 2.93 g/cm3"
-"DeltaBW" ,"DeltaBW = FinalBWcorr - InitBWcorr; this is the change in dry weight over the 6 wk experiment based on buoyant weights"
-"pcDeltaBW" ,"pcDeltaBW = DeltaBW/InitBWcorr; this is the percent change in dry weight based on buoyant weight"
-"Volume" ,"Total volume (cm3) of 3 nubbins based on displacement; from dataframe CoralNubb"
-"SA" ,"Total surface area (cm2) of 3 nubbins based on displacement; summed from dataframe CoralNubb"
-"AW" ,"Total ashed weight (g) of 3 nubbins based on displacement; summed from dataframe CoralNubb"
-"DW" ,"Total dry weight (g) of 3 nubbins based on displacement; summed from dataframe CoralNubb"
-"AFDW" ,"Total ash-free dry weight (g) of 3 nubbins based on displacement; summed from dataframe CoralNubb"
-"pcAFDW" ,"AFDW/DW; organic matter as a percent of total dry weight"
-"Nuts" ,"Nutrient level assigned to the aquarium: Ambient/Medium/High"
-"Tank" ,"Tank Identifier; each aquarium was assigned to one of 3 tanks"
-"Aq_Ex1" ,"Aquarium Identifier for Experiment 1; nine aquaria held coral nubbins in expt 1"
-"Aq_Ex2" ,"Aquarium Identifier for Experiment 2; all aquaria had coral nubbins in expt 2"
-"Check" ,"Flag if measurement appears to be outlier"
+SampleID ,Sample Identifier; single identifier for set of 3 Porites nubbins and 3 Montipora nubbins
+Species ,Porites compressa or Montipora capitata
+InitialBW ,Initial Buoyant Weight (g) of 3 nubbins
+InitialTemp ,Temperature (C) at time of initial buoyant weighing
+InitialDate ,Date of initial buoyant weighing
+FinalBW ,Final Buoyant Weight (g) of 3 nubbins
+FinalTemp ,Temperature (C) at time of final buoyant weighing
+FinalDate ,Date of final buoyant weighing
+InitBWcorr ,Initial Dry Weight of coral set based on buoyant wt; calculated from InitialBW and InitialTemp based on Davies (1989) and a coral density of 2.93 g/cm3
+FinalBWcorr ,Final Dry Weight of coral set based on buoyant wt; calculated from FinalBW and FinalTemp based on Davies (1989) and a coral density of 2.93 g/cm3
+DeltaBW ,DeltaBW = FinalBWcorr - InitBWcorr; this is the change in dry weight over the 6 wk experiment based on buoyant weights
+pcDeltaBW ,pcDeltaBW = DeltaBW/InitBWcorr; this is the percent change in dry weight based on buoyant weight
+Volume ,Total volume (cm3) of 3 nubbins based on displacement; from dataframe CoralNubb
+SA ,Total surface area (cm2) of 3 nubbins based on displacement; summed from dataframe CoralNubb
+AW ,Total ashed weight (g) of 3 nubbins based on displacement; summed from dataframe CoralNubb
+DW ,Total dry weight (g) of 3 nubbins based on displacement; summed from dataframe CoralNubb
+AFDW ,Total ash-free dry weight (g) of 3 nubbins based on displacement; summed from dataframe CoralNubb
+pcAFDW ,AFDW/DW; organic matter as a percent of total dry weight
+Nuts ,Nutrient level assigned to the aquarium: Ambient/Medium/High
+Tank ,Tank Identifier; each aquarium was assigned to one of 3 tanks
+Aq_Ex1 ,Aquarium Identifier for Experiment 1; nine aquaria held coral nubbins in expt 1
+Aq_Ex2 ,Aquarium Identifier for Experiment 2; all aquaria had coral nubbins in expt 2
+Check ,Flag if measurement appears to be outlier

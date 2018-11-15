@@ -1,16 +1,15 @@
-"","x"
-"SampleID","Sample Identifier"
-"InitialBW","Buoyant Weight of Sand in petri dish at beginning of experiment"
-"InitialTemp","Temperature during initial buoyant weight"
-"PercentOutside","Visual estimate of the percent of sand that spilled out of petri dish"
-"MeasVol","Final Volume of Sand (cm3) measured by displacement; only for 8 samples"
-"DW","Final Dry Wt of Sand (g) after drying at 60C for >48 hours"
-"SA","Surface Area (cm2) of Sand based on area of petri dish; same for all samples"
-"Vol","Estimated Final volume (cm3) of Sand based on regression between measured volume vs dry weight (n=8,Rsq=0.999)"
-"AW","Ashed weight (g) of Sand after combustion at 550C for 4 hours"
-"AFDW","Ash Free Dry Weight (g) = DW - AW; weight (g) of organic matter lost on combustion"
-"pcAFDW","Percent Ash Free Dry Weight = AFDW/DW; percent of dry weight that is organic matter"
-"Nuts","Nutrient level assigned to the aquarium: Ambient/Medium/High"
-"Tank","Tank Identifier; each aquarium was assigned to one of 3 tanks"
-"Aq_Ex1","Aquarium Identifier for Experiment 1; nine aquaria held coral nubbins in expt 1"
-"Aq_Ex2","Aquarium Identifier for Experiment 2; all aquaria had coral nubbins in expt 2"
+SampleID,Sample Identifier
+InitialBW,Buoyant Weight of Sand in petri dish at beginning of experiment
+InitialTemp,Temperature during initial buoyant weight
+PercentOutside,Visual estimate of the percent of sand that spilled out of petri dish
+MeasVol,Final Volume of Sand (cm3) measured by displacement; only for 8 samples
+DW,Final Dry Wt of Sand (g) after drying at 60C for >48 hours
+SA,Surface Area (cm2) of Sand based on area of petri dish; same for all samples
+Vol,"Estimated Final volume (cm3) of Sand based on regression between measured volume vs dry weight (n=8,Rsq=0.999)"
+AW,Ashed weight (g) of Sand after combustion at 550C for 4 hours
+AFDW,Ash Free Dry Weight (g) = DW - AW; weight (g) of organic matter lost on combustion
+pcAFDW,Percent Ash Free Dry Weight = AFDW/DW; percent of dry weight that is organic matter
+Nuts,Nutrient level assigned to the aquarium: Ambient/Medium/High
+Tank,Tank Identifier; each aquarium was assigned to one of 3 tanks
+Aq_Ex1,Aquarium Identifier for Experiment 1; nine aquaria held coral nubbins in expt 1
+Aq_Ex2,Aquarium Identifier for Experiment 2; all aquaria had coral nubbins in expt 2
