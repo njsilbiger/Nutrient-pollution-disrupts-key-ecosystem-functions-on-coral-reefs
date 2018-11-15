@@ -1,27 +1,26 @@
-"x"
-"SampleID" ,"Sample Identifier"
-"InitialWW" ,"Initial Wet Weight (g) of Gracilaria salicornia; weighed after drying in salad spinner"
-"FinalWW" ,"Final Wet Weight (g) of Gracilaria salicornia; weighted after drying in salad spinner"
-"BitsWW" ,"Final Wet Weight (g) of bits of algae that fell out of the individual mesh container but remained in the experimental aquarium; the bits are not included in the mass change calculations because they cannot be associated with individual samples in Expt-1; they are included in the ecosystem metabolism calculations at the aquarium scale"
-"TrayNum1" ,"Tray Number associated with the algae sample"
-"TrayNumBits" ,"Tray Number associated with the algae bits"
-"DeltaWW" ,"DeltaWW = FinalWW - InitialWW; change in wet weight (g) over the 6 week experiment"
-"pcDeltaWW" ,"pcDeltaWW = DeltaWW/InitialWW; percent change in wet weight over 6 week experiment"
-"Nuts" ,"Nutrient level assigned to the aquarium: Ambient/Medium/High"
-"Tank" ,"Tank Identifier; each aquarium was assigned to one of 3 tanks"
-"Aq_Ex1" ,"Aquarium Identifier for Experiment 1; nine aquaria held coral nubbins in expt 1"
-"Aq_Ex2" ,"Aquarium Identifier for Experiment 2; all aquaria had coral nubbins in expt 2"
-"TrayWt" ,"Tray Weight (g) associated with the sample"
-"DW" ,"Dry Weight (g) of algal sample after drying at 60C for >48 hours"
-"AW" ,"Ash Weight (g) of algal sample after combusting at 550C for 4 hours"
-"AFDW" ,"AFDW = DW - AW; Weight (g) of organic matter lost on combustion"
-"pcAFDW" ,"Percent Ash Free Dry Weight = AFDW/DW; this is the percent of the total dry weight that is organic matter"
-"TrayWtBits" ,"Tray Weight Associated with algae bits"
-"DWbits" ,"Dry Weight (g) of algae bits after drying at 60C for >48 hours"
-"AWbits" ,"Ash Weights (g) of algal bits after combusting at 550C for 4 hours"
-"AFDWbits" ,"AFDWbits = DWbits - AWbits; Weight (g) of organic matter lost on combustion"
-"pcAFDWbits" ,"AFDW/DW; percent ash free dry weight for algae bits"
-"FinalVol" ,"Final Volume (cm3) of algae based on regression of volume vs wet weight of 6 samples, Rsq = 0.998"
-"BitsVol" ,"Final Volume (cm3) of algal bits based on regression of volume vs wet weight"
-"FinalSA" ,"Final Surface Area (cm2) of algae based on volume, average diameter of Gracilaria salicornia (2.31 mm +/- .087mm se, n=11), and the assumption that Graciliaria salicornia is made up of cylinders"
-"BitsSA" ,"Final Surface Area (cm2) of algae bits"
+SampleID ,Sample Identifier
+InitialWW ,Initial Wet Weight (g) of Gracilaria salicornia; weighed after drying in salad spinner
+FinalWW ,Final Wet Weight (g) of Gracilaria salicornia; weighted after drying in salad spinner
+BitsWW ,Final Wet Weight (g) of bits of algae that fell out of the individual mesh container but remained in the experimental aquarium; the bits are not included in the mass change calculations because they cannot be associated with individual samples in Expt-1; they are included in the ecosystem metabolism calculations at the aquarium scale
+TrayNum1 ,Tray Number associated with the algae sample
+TrayNumBits ,Tray Number associated with the algae bits
+DeltaWW ,DeltaWW = FinalWW - InitialWW; change in wet weight (g) over the 6 week experiment
+pcDeltaWW ,pcDeltaWW = DeltaWW/InitialWW; percent change in wet weight over 6 week experiment
+Nuts ,Nutrient level assigned to the aquarium: Ambient/Medium/High
+Tank ,Tank Identifier; each aquarium was assigned to one of 3 tanks
+Aq_Ex1 ,Aquarium Identifier for Experiment 1; nine aquaria held coral nubbins in expt 1
+Aq_Ex2 ,Aquarium Identifier for Experiment 2; all aquaria had coral nubbins in expt 2
+TrayWt ,Tray Weight (g) associated with the sample
+DW ,Dry Weight (g) of algal sample after drying at 60C for >48 hours
+AW ,Ash Weight (g) of algal sample after combusting at 550C for 4 hours
+AFDW ,AFDW = DW - AW; Weight (g) of organic matter lost on combustion
+pcAFDW ,Percent Ash Free Dry Weight = AFDW/DW; this is the percent of the total dry weight that is organic matter
+TrayWtBits ,Tray Weight Associated with algae bits
+DWbits ,Dry Weight (g) of algae bits after drying at 60C for >48 hours
+AWbits ,Ash Weights (g) of algal bits after combusting at 550C for 4 hours
+AFDWbits ,AFDWbits = DWbits - AWbits; Weight (g) of organic matter lost on combustion
+pcAFDWbits ,AFDW/DW; percent ash free dry weight for algae bits
+FinalVol ,"Final Volume (cm3) of algae based on regression of volume vs wet weight of 6 samples, Rsq = 0.998"
+BitsVol ,Final Volume (cm3) of algal bits based on regression of volume vs wet weight
+FinalSA ,"Final Surface Area (cm2) of algae based on volume, average diameter of Gracilaria salicornia (2.31 mm +/- .087mm se, n=11), and the assumption that Graciliaria salicornia is made up of cylinders"
+BitsSA ,Final Surface Area (cm2) of algae bits
